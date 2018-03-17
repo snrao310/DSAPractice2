@@ -18,6 +18,7 @@ public class BinaryTreeLevelOrderTraversalLeetCode {
         }
     }
 
+
     public static List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
