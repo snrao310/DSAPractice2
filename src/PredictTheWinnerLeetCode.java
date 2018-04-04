@@ -33,6 +33,7 @@ import java.util.Arrays;
 
 public class PredictTheWinnerLeetCode {
 
+    //dp[start][end] is the maximum points that can be won by the player who picks first from this in this subarray.
     public static boolean PredictTheWinner(int[] nums) {
         int len = nums.length, sum = 0, dp[][] = new int[len][len];
         for (int i = 0; i < len; i++)
