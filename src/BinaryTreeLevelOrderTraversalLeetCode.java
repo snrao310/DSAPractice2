@@ -21,15 +21,14 @@ public class BinaryTreeLevelOrderTraversalLeetCode {
     public static List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
-        HashSet<TreeNode> visited = new HashSet<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root); queue.offer(null);
         while(queue.peek()!=null){
             TreeNode cur = queue.poll();
             list.add(cur.val);
-            if(cur.left!=null && !visited.contains(cur.left))
+            if(cur.left!=null)
                 queue.offer(cur.left);
-            if(cur.right!=null && !visited.contains(cur.right))
+            if(cur.right!=null)
                 queue.offer(cur.right);
             if(queue.peek() == null){
                 queue.offer(null);
@@ -49,7 +48,7 @@ public class BinaryTreeLevelOrderTraversalLeetCode {
         root.left.left= new TreeNode(4);
         root.left.right = new TreeNode(6);
         root.right.right = new TreeNode(16);
-        List<List<Integer>> res= levelOrder(null);
+        List<List<Integer>> res= levelOrder(root);
         for(List<Integer>  l: res){
             System.out.println(l);
         }
