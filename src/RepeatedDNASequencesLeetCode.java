@@ -18,7 +18,7 @@ import java.util.List;
  * ["AAAAACCCCC", "CCCCCAAAAA"].
  *
  */
-public class RepeatedDNASequenceLeetCode {
+public class RepeatedDNASequencesLeetCode {
 
 
     public static List<String> findRepeatedDnaSequences(String s) {
