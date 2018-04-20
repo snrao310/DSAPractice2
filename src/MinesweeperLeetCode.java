@@ -59,7 +59,7 @@ import java.util.Queue;
  *
  */
 
-public class MineSweeperLeetCode {
+public class MinesweeperLeetCode {
 
     private static int[][] dirns = new int[][]{{1,0},{-1,0},{0,1},{0,-1},{1,1},{1,-1},{-1,-1},{-1,1}};
 
