@@ -15,6 +15,7 @@ import java.util.Arrays;
 // each move you make.
 public class GuessNumbersHigherLowerIILeetCode {
 
+    //dp[i][j] = answer for array from i to j.
     public static int getMoneyAmount(int n) {
         if(n==1) return 0;
         int dp[][] = new int[n+1][n+1];

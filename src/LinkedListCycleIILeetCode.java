@@ -16,6 +16,19 @@ public class LinkedListCycleIILeetCode {
         ListNode(int x){val=x;}
     }
 
+    //fast pointer will always meet slow pointer if there is a cycle. Just like faster runner will pass slower runner
+    //in a circular track. To find the meeting point:
+    //Let D = number of nodes from head to start of cycle.
+    //Let k = number of nodes from start of cycle to meeting point.
+    //Let N = number of nodes traveled by slow pointer.
+    //Then 2N = number of nodes traveled by fast pointer.
+    //Let C = number of nodes in cycle.
+    // N = D + Ci + k ,where i is the number of cycles covered by slow pointer.
+    // 2N = D + Cj + k ,where j is the number of cycles covered by fast pointer.
+    // implies 2D + 2Ci + 2k = D + Cj + k
+    // implies D = C(j - 2i) - k
+    //which means when the if the pointer moves D nodes from the meeting point, it will reach the start of the cycle.
+
     public static ListNode detectCycle(ListNode head) {
         ListNode slow=(head==null)?head:head.next, fast=(slow==null)?slow:slow.next;
         while(fast!=null){
