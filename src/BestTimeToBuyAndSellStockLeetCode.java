@@ -22,17 +22,12 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 public class BestTimeToBuyAndSellStockLeetCode {
 
     public static int maxProfit(int[] prices) {
-        if(prices.length==0) return 0;
-        int profit =0, min = prices[0], max = prices[0];
-        for(int i=1;i<prices.length;i++){
+        int min=Integer.MAX_VALUE, profit =0;
+        for(int i=0;i<prices.length;i++){
             if(prices[i]<min){
-                min = prices[i];
-                max = prices[i];
+                min=prices[i];
             }
-            else if(prices[i]>max){
-                max = prices[i];
-                profit = Math.max(max-min, profit);
-            }
+            profit = Math.max(prices[i]-min,profit);
         }
         return profit;
     }
