@@ -20,30 +20,25 @@ import java.util.Comparator;
 public class QueueReconstructionLeetCode {
 
     public static int[][] reconstructQueue(int[][] people) {
-        //sorting by first element and second in case of tie in first
+        if(people.length==0) return people;
+        int[][] result = new int[people.length][2];
+        Arrays.fill(result,new int[]{-1,-1});
         Arrays.sort(people, new Comparator<int[]>(){
             @Override
-            public int compare(int[] o1, int[] o2){
-                if(o1[0]!=o2[0])
-                    return o1[0]-o2[0];
-                else
-                    return o1[1]-o2[1];
+            public int compare(int[] o1,int[]o2){
+                if(o1[0]==o2[0])
+                    return o2[1]-o1[1];
+                return o1[0]-o2[0];
             }
         });
-
-        //after ith iteration of outter loop, if result[j][0]=-1 then a greater or equal element will take the place
-        //in next iterations.
-        int[][] result = new int[people.length][2];
-        for(int[] i:result) Arrays.fill(i,-1);
         for(int i=0;i<people.length;i++){
-            int k=0;
-            for(int j=0;j<people.length;j++){
-                if(result[j][0]==-1 && k==people[i][1]){
+            for(int j=0, k=-1;j<result.length;j++){ ;
+                if(result[j][0]==-1 && result[j][1]==-1)
+                    k++;
+                if(k==people[i][1]){
                     result[j]=people[i];
                     break;
                 }
-                else if(result[j][0]==-1 || result[j][0]==people[i][0])
-                    k++;
             }
         }
         return result;

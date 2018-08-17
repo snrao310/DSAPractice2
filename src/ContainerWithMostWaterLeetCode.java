@@ -6,7 +6,7 @@
  * with x-axis forms a container, such that the container contains the most water.
  */
 
-public class ContainerWithMostWaterLeetCOde {
+public class ContainerWithMostWaterLeetCode {
 
     public static int maxArea(int[] height) {
         int maxArea = Integer.MIN_VALUE;
