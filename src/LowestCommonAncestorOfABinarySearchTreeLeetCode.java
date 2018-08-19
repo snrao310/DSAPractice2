@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 4/10/2017.
  *
  * Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
  *

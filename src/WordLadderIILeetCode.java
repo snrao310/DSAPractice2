@@ -1,7 +1,6 @@
 import java.util.*;
 
 /**
- * Created by S N Rao on 3/31/2017.
  *
  * Given two words (beginWord and endWord), and a dictionary's word list, find all shortest transformation sequence(s)
  * from beginWord to endWord, such that:

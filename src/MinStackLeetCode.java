@@ -1,7 +1,6 @@
 import java.util.Stack;
 
 /**
- * Created by S N Rao on 4/24/2017.
  *
  * Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
  *
