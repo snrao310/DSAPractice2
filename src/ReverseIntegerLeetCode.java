@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 4/17/2017.
  *
  * Reverse digits of an integer.
  *

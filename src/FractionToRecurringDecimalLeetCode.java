@@ -1,7 +1,6 @@
 import java.util.HashMap;
 
 /**
- * Created by S N Rao on 1/25/2017.
  *
  * Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
  *

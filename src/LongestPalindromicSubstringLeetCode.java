@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 1/19/2017.
  *
  * Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
  *

@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 4/25/2017.
  *
  * Given a positive integer, return its corresponding column title as appear in an Excel sheet.
  *

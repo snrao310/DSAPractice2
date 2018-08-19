@@ -1,7 +1,6 @@
 import java.util.Stack;
 
 /**
- * Created by S N Rao on 1/11/2017.
  *
  *
  * Given a sequence of n integers a1, a2, ..., an, a 132 pattern is a subsequence ai, aj, ak such that i < j < k

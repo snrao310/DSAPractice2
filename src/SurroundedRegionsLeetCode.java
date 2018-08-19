@@ -2,7 +2,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Created by S N Rao on 1/25/2017.
  *
  * Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
  *

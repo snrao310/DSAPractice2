@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 1/26/2017.
  *
  * Implement atoi to convert a string to an integer.
  *

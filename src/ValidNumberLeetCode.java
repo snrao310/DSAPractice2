@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 4/3/2017.
  *
  * Validate if a given string is numeric.
  *

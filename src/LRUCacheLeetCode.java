@@ -1,7 +1,6 @@
 import java.util.HashMap;
 
 /**
- * Created by S N Rao on 3/30/2017.
  *
  * Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following
  * operations: get and put.

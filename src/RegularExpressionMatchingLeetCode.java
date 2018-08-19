@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 3/20/2017.
  *
  * Implement regular expression matching with support for '.' and '*'.
  *

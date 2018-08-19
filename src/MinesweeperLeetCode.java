@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Created by S N Rao on 4/5/2017.
  *
  * Let's play the minesweeper game (Wikipedia, online game)!
  *

@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 8/23/2017.
  *
  * Divide two integers without using multiplication, division and mod operator.
  *

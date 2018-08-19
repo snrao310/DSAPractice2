@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 4/18/2017.
  *
  * Determine whether an integer is a palindrome. Do this without extra space.
  *

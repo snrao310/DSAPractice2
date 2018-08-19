@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 1/26/2017.
  *
  * Given an input string, reverse the string word by word.
  *
