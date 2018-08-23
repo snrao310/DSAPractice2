@@ -28,40 +28,37 @@ public class SpiralMatrixLeetCode {
     public static List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> result = new ArrayList<>();
         if(matrix.length==0) return result;
-        int height= matrix.length, width = matrix[0].length;
-        int colStart = 0, colEnd = width - 1, rowStart = 0, rowEnd = height - 1, visited = 0, totalElements = height * width, flag = 1;
-        while (visited != totalElements) {
-            for (int i = colStart; i != colEnd; i += flag) {
+        int done = 0, n = matrix.length*matrix[0].length, dir = 1;
+        int rowMin = 0, rowMax = matrix.length-1, colMin = 0, colMax = matrix[0].length-1;
+        int rowStart = rowMin, rowEnd = rowMax, colStart = colMin, colEnd = colMax;
+        while(done!=n){
+            for(int i=colStart; i!=colEnd; i+=dir){
                 result.add(matrix[rowStart][i]);
-                if (++visited == totalElements) return result;
+                if(++done==n) break;
             }
-            for (int i = rowStart; i != rowEnd; i += flag) {
+            for(int i=rowStart; i!=rowEnd; i+=dir){
                 result.add(matrix[i][colEnd]);
-                if (++visited == totalElements) return result;
+                if(++done==n) break;
             }
-            int temp=colStart;
-            colStart=colEnd;
-            colEnd=temp;
-
-            temp=rowStart;
-            rowStart=rowEnd;
-            rowEnd=temp;
-
-            flag *= -1;
-            if(flag==1){
-                rowStart++;rowEnd--; colStart++;colEnd--;
+            if(rowEnd==rowStart) {
+                result.add(matrix[rowStart][colEnd]);
+                if(++done==n) break;
             }
-            if(rowStart==rowEnd && colStart==colEnd) {
-                result.add(matrix[rowEnd][colEnd]);
-                if(++visited==totalElements)
-                    return result;
+            if(dir==-1){
+                rowMin++; rowMax--;
+                colMin++; colMax--;
+                rowStart = rowMin; rowEnd = rowMax; colStart = colMin; colEnd = colMax;
             }
+            else{
+                rowStart = rowMax; rowEnd = rowMin; colStart = colMax; colEnd = colMin;
+            }
+            dir*=(-1);
         }
         return result;
     }
 
     public static void main(String args[]) {
         System.out.println(spiralOrder(new int[][]{{1}}));
-        System.out.println(spiralOrder(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}));
+        System.out.println(spiralOrder(new int[][]{{1}, {2}, {3}}));
     }
 }

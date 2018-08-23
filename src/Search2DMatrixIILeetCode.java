@@ -1,9 +1,8 @@
 /**
  *
- * Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following
- * properties:
- * Integers in each row are sorted from left to right.
- * The first integer of each row is greater than the last integer of the previous row.
+ *Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+ * Integers in each row are sorted in ascending from left to right.
+ * Integers in each column are sorted in ascending from top to bottom.
  *
  */
 
@@ -16,32 +15,32 @@ public class Search2DMatrixIILeetCode {
 
     //Recursion eliminates 1/4 of the array every time. O(log N) where N is number of elements. Or O(log m*n) where m is
     //number of rows and n is number of columns. Same as O(logm + logn).
-    private static boolean searchMatrix(int[][] matrix, int target, int startRow, int startCol, int endRow, int endCol) {
-        int rows = endRow-startRow+1, cols= endCol-startCol+1;
-        if(rows*cols <=4 ) return manualSearch(matrix,target,startRow,startCol,endRow,endCol);
-
-        int midRow = startRow + rows/2, midCol = startCol + cols/2;
-        int pivot = matrix[midRow][midCol];
-        if(pivot<target){
-            return searchMatrix(matrix,target,midRow,midCol,endRow,endCol) ||
-                    searchMatrix(matrix,target,midRow,startCol,endRow,midCol) ||
-                    searchMatrix(matrix,target,startRow,midCol,midRow,endCol);
+    private static boolean searchMatrix(int[][] matrix, int target, int rowStart, int colStart, int rowEnd, int colEnd){
+        if(rowEnd<rowStart || colEnd<colStart) return false;
+        if((rowEnd-rowStart+1)*(colEnd-colStart+1)<=4)
+            return manualSearch(matrix,target,rowStart,colStart,rowEnd,colEnd);
+        int midRow = rowStart + (rowEnd-rowStart)/2;
+        int midCol = colStart + (colEnd-colStart)/2;
+        int midVal = matrix[midRow][midCol];
+        if(midVal==target) return true;
+        if(midVal>target){
+            return searchMatrix(matrix,target,rowStart,colStart,midRow-1,midCol-1) ||
+                    searchMatrix(matrix,target,midRow,colStart,rowEnd,midCol-1) ||
+                    searchMatrix(matrix,target,rowStart,midCol,midRow-1,colEnd);
         }
         else{
-            return searchMatrix(matrix,target,startRow,startCol,midRow,midCol) ||
-                    searchMatrix(matrix,target,midRow,startCol,endRow,midCol) ||
-                    searchMatrix(matrix,target,startRow,midCol,midRow,endCol);
+            return searchMatrix(matrix,target,rowStart,midCol+1,midRow-1,colEnd) ||
+                    searchMatrix(matrix,target,midRow+1,colStart,rowEnd,midCol-1) ||
+                    searchMatrix(matrix,target,midRow,midCol,rowEnd,colEnd);
         }
     }
 
     private static boolean manualSearch(int[][] matrix, int target, int startRow, int startCol, int endRow, int endCol){
-        for(int i=startRow;i<=endRow;i++){
-            for(int j=startCol;j<=endCol;j++){
-                if(matrix[i][j]==target)
-                    return true;
-            }
-        }
-        return false;
+       for(int i=startRow;i<=endRow;i++)
+           for(int j=startCol;j<=endCol;j++)
+               if(matrix[i][j]==target)
+                   return true;
+       return false;
     }
 
     public static void main(String args[]){
