@@ -29,6 +29,7 @@ public class MedianOfTwoSortedArraysLeetCode {
     //But due to different lengths, we reduce each array by half the length of smaller array each time. Base cases are the real challenge.
     //Note that if halves of the array on each side of mid are of different size, we reduce by the smaller half's length
     //even if elimination is in the bigger half's side. This will ensure the median is still in the remaining part of the array.
+    //Complexity is O(log(min(m,n)))
     public static double findMedianSortedArrays(int[] nums1, int[] nums2, int start1, int end1, int start2, int end2){
         int len1 = end1-start1+1, len2 = end2-start2+1;
         int mid1 = start1+(len1-1)/2, mid2 = start2+(len2-1)/2;
@@ -69,6 +70,7 @@ public class MedianOfTwoSortedArraysLeetCode {
         else
             return (nums[mid]+nums[mid-1])/2.0;
     }
+
 
     //median of a sorted array and one number (when len2=1). 3 cases: len1 is 1. len1 is odd, len1 is even.
     private static double getMedian(int[] nums, int start, int end, int x){
