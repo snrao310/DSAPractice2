@@ -88,18 +88,16 @@ public class PopulatingNextRightPointerLeetCode {
     }
 
     //Iterative O(n) time. Constant space. Best solution Awesome!!!
-    public static void connect(TreeLinkNode root){
-        TreeLinkNode first = root,cur;
+    public static void connect(TreeLinkNode root) {
+        TreeLinkNode first = root;
         while(first!=null){
-            cur=first;
-            first=cur.left;
-            while(cur!=null){
-                if(cur.left!=null && cur.right!=null)
-                    cur.left.next = cur.right;
-                if(cur.next!=null && cur.right!=null && cur.next.left!=null)
-                    cur.right.next=cur.next.left;
-                cur=cur.next;
+            TreeLinkNode temp = first;
+            while(temp!=null){
+                if(temp.left!=null) temp.left.next=temp.right;
+                if(temp.right!=null && temp.next!=null) temp.right.next=temp.next.left;
+                temp=temp.next;
             }
+            first=first.left;
         }
     }
 
