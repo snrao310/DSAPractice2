@@ -1,5 +1,4 @@
 /**
- * Created by S N Rao on 4/21/2017.
  *
  * Write a program to find the node at which the intersection of two singly linked lists begins.
  *
