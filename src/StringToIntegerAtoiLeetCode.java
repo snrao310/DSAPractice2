@@ -6,31 +6,24 @@
 public class StringToIntegerAtoiLeetCode {
 
     public static int myAtoi(String str) {
-        //leading zeroes
-        int sign=1,i=0,j=0;
-        if(str.length()==0) return 0;
-        while(i<str.length() && str.charAt(i)==' ') i++;
-        if(str.charAt(i)=='+') sign=1;
-        if(str.charAt(i)=='-') sign=-1;
-        if(str.charAt(i)=='+' ||str.charAt(i)=='-') i++;
-        while(i<str.length() && str.charAt(i)=='0') i++;
-        if(i==str.length()) return 0;
-        j=i;
-        while(i<str.length() && str.charAt(i)!='.' && str.charAt(i)!=' ') i++;
-        str=str.substring(j,i);
-
-        long pow=0;
-        for(i=0;i<str.length();i++){
-            char c=str.charAt(i);
-            if(!Character.isDigit(c)) break;
-            int cur=Character.getNumericValue(c);
-            pow=pow*10+cur;
-            if(pow>Integer.MAX_VALUE) break;
+        char st[] = str.toCharArray();
+        boolean isNegative = false;
+        int i=0;
+        while(i<st.length && st[i]==' ')i++;
+        if(i==st.length) return 0;
+        if(st[i]=='+' || st[i]=='-'){
+            isNegative = (st[i]=='-');
+            i++;
         }
-        pow=pow*sign;
-        if(pow>Integer.MAX_VALUE) return Integer.MAX_VALUE;
-        if(pow<Integer.MIN_VALUE) return Integer.MIN_VALUE;
-        return (int) pow;
+        long result = 0;
+        while(i<st.length && Character.isDigit(st[i])){
+            int num = Character.getNumericValue(st[i]);
+            result=(result*10)+num;
+            if(isNegative && (-result)<Integer.MIN_VALUE) return Integer.MIN_VALUE;
+            if(!isNegative && result>Integer.MAX_VALUE) return Integer.MAX_VALUE;
+            i++;
+        }
+        return (isNegative)?(int)(-result):(int)result;
     }
 
     public static void main(String args[]){
