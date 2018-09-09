@@ -8,62 +8,48 @@
  *
  */
 public class ReverseWordsInAStringLeetCode {
-
     public static String reverseWords(String s) {
         if(s.length()==0) return s;
-        char[] st=s.toCharArray();
-        reverse(st,0,st.length-1);
-        reverseWordsReversed(st);
-        return removeSpaces(st);
+        char[] str = s.toCharArray();
+        reverse(str,0,str.length-1);
+        reverseEachWord(str);
+        int len = removeSpaces(str);
+        return String.valueOf(str).substring(0,len);
     }
 
-    private static String removeSpaces(char[] st){
-        int i=0,j=0;
-        char prev=' ';
-        while(i<st.length){
-            if(st[i]==' ' && prev!=' ') {
-                st[j] = st[i];
-                j++;
+    private static void reverseEachWord(char[] str){
+        int wordStart=-1;
+        for(int i=0;i<=str.length;i++){
+            if((i==str.length || str[i]==' ') && wordStart!=-1){
+                reverse(str,wordStart,i-1);
+                wordStart=-1;
             }
-            else if(st[i]!=' '){
-                st[j]=st[i];
-                j++;
-            }
-            prev=st[i];
-            i++;
-        }
-        if(j>0 && st[j-1]==' ') j--;
-        return new String(st).substring(0,j);
-    }
-
-    private static void reverseWordsReversed(char[] st){
-        String cur="";
-        int start=0,end=0;
-        for(int i=0;i<st.length;i++){
-            if(st[i]!=' ') {
-                cur+=st[i];
-                end=i;
-            }
-            if(st[i]==' ' || i==st.length-1){
-                if(!cur.equals(""))
-                    reverse(st,start,end);
-                cur="";
-                start=i+1;
-            }
+            else if(wordStart==-1)
+                wordStart=i;
         }
     }
 
-    private static void reverse(char[] st,int s,int e){
-        int i=0,n=(e-s)/2;
-        for(i=0;i<=n;i++){
-            char temp=st[i+s];
-            st[i+s]=st[e-s-i+s];
-            st[e-s-i+s]=temp;
+    private static void reverse(char[] word, int start, int end){
+        while(start<end){
+            char temp=word[start]; word[start]=word[end]; word[end]=temp;
+            start++;end--;
         }
     }
+
+    private static int removeSpaces(char[] str){
+        boolean prevSpace=true;
+        int i,j;
+        for(i=0, j=0;j<str.length;j++){
+            if(str[j]!=' ' || !prevSpace){
+                prevSpace=(str[j]==' ');
+                str[i++]=str[j];
+            }
+        }
+        return (i==0 || str[i-1]!=' ')?i:i-1;
+    }
+
 
     public static void main(String args[]){
-        System.out.println(reverseWords("  The sky is  blue  "));
-        System.out.println(reverseWords(""));
+        System.out.println(reverseWords("   a   b  c d   e  "));
     }
 }
