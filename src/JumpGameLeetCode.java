@@ -8,11 +8,11 @@
 public class JumpGameLeetCode {
 
     public static boolean canJump(int[] nums) {
-        int maxReach=0;
+        if(nums.length==0) return true;
+        int len=nums.length, maxReach=nums[0];
         for(int i=0;i<=maxReach;i++){
-            maxReach=Math.max(maxReach,i+nums[i]);
-            if(maxReach>=nums.length-1)
-                return true;
+            maxReach=Math.max(maxReach, i+nums[i]);
+            if(maxReach>=len-1) return true;
         }
         return false;
     }

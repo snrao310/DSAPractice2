@@ -8,16 +8,13 @@
 public class ContainerWithMostWaterLeetCode {
 
     public static int maxArea(int[] height) {
-        int maxArea = Integer.MIN_VALUE;
-        int left = 0, right = height.length - 1;
-
-        while(left<right){
-            int area = (right - left) * Math.min(height[left], height[right]);
-            maxArea = Math.max(area, maxArea);
-            if(height[left] < height[right])
-                left++;
-            else
-                right--;
+        int l=0,r=height.length-1, maxArea=0;
+        while(l<r){
+            int h=Math.min(height[l],height[r]);
+            int w=r-l;
+            maxArea=Math.max(maxArea,w*h);
+            if(height[l]<=height[r]) l++;
+            else r--;
         }
         return maxArea;
     }
