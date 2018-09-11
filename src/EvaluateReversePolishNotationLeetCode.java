@@ -10,24 +10,27 @@ import java.util.Stack;
 public class EvaluateReversePolishNotationLeetCode {
 
     public static int evalRPN(String[] tokens) {
-        if(tokens.length==1)
-            return Integer.parseInt(tokens[0]);
-        Stack<Integer> stack=new Stack<>();
-        for(String s:tokens){
-            if(s.equals("*"))
-                stack.push(stack.pop()*stack.pop());
-            else if(s.equals("/")){
-                int a=stack.pop(),b=stack.pop();
-                stack.push(b/a);
+        Stack<String> stack=new Stack<>();
+        for(int i=0;i<tokens.length;i++){
+            String cur = tokens[i];
+            if(cur.equals("+") || cur.equals("-") || cur.equals("*") || cur.equals("/")){
+                int a=Integer.parseInt(stack.pop());
+                int b=Integer.parseInt(stack.pop());
+                stack.push(Integer.toString(calculate(b,cur.charAt(0),a)));
             }
-            else if(s.equals("+"))
-                stack.push(stack.pop()+stack.pop());
-            else if(s.equals("-"))
-                stack.push(-(stack.pop()-stack.pop()));
-            else
-                stack.push(Integer.parseInt(s));
+            else stack.push(cur);
         }
-        return stack.pop();
+        return Integer.parseInt(stack.pop());
+    }
+
+    private static int calculate(int x, char op, int y){
+        switch (op){
+            case '+': return x+y;
+            case '-': return x-y;
+            case '*': return x*y;
+            case '/': return x/y;
+            default: return -1;
+        }
     }
 
     public static void main(String args[]){

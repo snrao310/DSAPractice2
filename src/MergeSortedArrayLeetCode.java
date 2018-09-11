@@ -1,7 +1,6 @@
 import java.util.Arrays;
 
 /**
- * Created by S N Rao on 4/20/2017.
  *
  * Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
  *
@@ -13,14 +12,15 @@ import java.util.Arrays;
 public class MergeSortedArrayLeetCode {
 
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        int p1=m-1, p2=n-1, p=m+n-1;
-        while(p1!=-1 && p2!=-1){
-            if(nums1[p1]>nums2[p2]) nums1[p--]=nums1[p1--];
-            else nums1[p--]=nums2[p2--];
-            if(p1==-1) break;
+        int i=m-1, j=n-1, k=m+n-1;
+        while(i>=0 && j>=0){
+            if(nums1[i]>nums2[j])
+                nums1[k--]=nums1[i--];
+            else
+                nums1[k--]=nums2[j--];
         }
-        while(p2>=0)
-            nums1[p--]=nums2[p2--];
+        while(j>=0)
+            nums1[k--]=nums2[j--];
     }
 
     public static void main(String args[]){

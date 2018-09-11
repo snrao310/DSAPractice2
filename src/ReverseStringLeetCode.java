@@ -8,16 +8,15 @@
  */
 public class ReverseStringLeetCode {
 
+    //can always do return new StringBuilder(s).reverse().toString();
     public static String reverseString(String s) {
-        //can always do return new StringBuilder(s).reverse().toString();
-        char[] arr=s.toCharArray();
-        int n=arr.length, goTill=n/2 - 1;
-        for(int i=0;i<=goTill;i++){
-            char temp=arr[i];
-            arr[i]=arr[n-1-i];
-            arr[n-1-i]=temp;
+        int i=0, j=s.length()-1;
+        char[] st=s.toCharArray();
+        while(i<j){
+            char temp=st[i]; st[i]=st[j]; st[j]=temp;
+            i++; j--;
         }
-        return new String(arr);
+        return String.valueOf(st);
     }
 
     public static void main(String[] args) {
