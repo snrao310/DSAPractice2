@@ -12,17 +12,24 @@ public class WordBreakLeetCode {
     public static boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> dict = new HashSet<>();
         for(String word: wordDict) dict.add(word);
-        return backtrackFunction(s, dict, 0);
+        int[] dp = new int[s.length()];
+        Arrays.fill(dp,-1);
+        return backtrackFunction(s, dict, 0,dp);
     }
 
-    private static boolean backtrackFunction(String s, HashSet<String> dict, int start){
+    private static boolean backtrackFunction(String s, HashSet<String> dict, int start,int[] dp){
+        if(dp[start]!=-1)
+            return dp[start]==1;
         for(int i=start+1;i<=s.length();i++){
             String sub = s.substring(start,i);
             if(dict.contains(sub)){
-                if(i==s.length()) return true;
-                if(backtrackFunction(s,dict,i)) return true;
+                if(i==s.length() || backtrackFunction(s,dict,i,dp)) {
+                    dp[start]=1;
+                    return true;
+                }
             }
         }
+        dp[start] = 0;
         return false;
     }
 
